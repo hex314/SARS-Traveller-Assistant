@@ -15,8 +15,8 @@
 | 类别 | 效率工具 / Productivity |
 | 版本 | 1.1.4 |
 | 开发者 | 个人开发者 |
-| 官网 / 支持链接 | 待填（可先用 GitHub 仓库或表单链接） |
-| 隐私政策链接 | 待托管，正文见 `privacy-policy.md` |
+| 官网 / 支持链接 | https://github.com/hex314/SARS-Traveller-Assistant |
+| 隐私政策链接 | https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html |
 
 名称长度 8 个字符，远低于 45 字符上限。
 
@@ -137,7 +137,7 @@ Host permission https://tools.sars.gov.za/sarsonlinequery/* — Required to read
 | 扩展内图标 | 16/32/48/128 PNG | ✅ 已生成并写入 manifest | `icons/icon*.png` |
 | 小宣传图 | 440×280 PNG | ✅ 已生成 | `store/promo-440x280.png` |
 | 商店截图 | 1280×800 或 640×400，1–5 张 | ⏳ 暂缓，可后续用真机截图替换 | `store/png/` |
-| 隐私政策链接 | 可公开访问的 URL | ⬜ 待托管（`privacy-policy.md` / `.html`） | — |
+| 隐私政策链接 | 可公开访问的 URL | ✅ 已上线（GitHub Pages） | https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html |
 | 上传包 | zip，根目录直接是 manifest.json | ✅ 已重新打包（含 icons/） | `store/SARS-Traveller-Assistant-1.1.4.zip` |
 
 > 根目录下的旧文件 `SARS-Traveller-Assistant.zip` 是改名前的版本，缺少 `icons/` 目录，
@@ -161,9 +161,9 @@ Host permission https://tools.sars.gov.za/sarsonlinequery/* — Required to read
 - [x] 无内联事件处理器（MV3 CSP 要求）
 - [x] 无 `unlimitedStorage`、`webRequest`、`cookies` 等敏感权限
 - [x] 名称、描述、权限说明与实际行为一致
-- [ ] 隐私政策已托管并填入商店后台
+- [x] 隐私政策已托管并填入商店后台（https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html）
 - [ ] 截图已上传
-- [ ] 已用干净 Chrome 配置测试一次完整流程（未登录状态、全新 profile）
+- [x] 已提交到公开仓库（https://github.com/hex314/SARS-Traveller-Assistant）
 
 ---
 
@@ -172,4 +172,4 @@ Host permission https://tools.sars.gov.za/sarsonlinequery/* — Required to read
 1. **权限理由要写"为什么"，不要写"用于填表"。** 审核员关注的是必要性，例如 `tabs` 要说明"每位旅客需要一个独立标签页，且需读取 URL 确认仍在申报流程内"。
 2. **不要在描述里承诺"全自动申报"。** 扩展不点击最终提交，文案中明确写"提交由人工确认"，可以降低"代替用户做法律声明"的合规风险。
 3. **第三方商标声明建议保留。** 描述里已注明与 SARS 无隶属关系；名称中避免直接使用 "SARS" 作为品牌前缀（当前名称为"南非入境申报助手"，符合要求）。
-4. **隐私政策必须可公开访问。** 建议托管在 GitHub Pages / 语雀公开页 / 个人站点，链接填入商店后台"隐私政策网址"。
+4. **隐私政策必须可公开访问。** 已托管在 GitHub Pages：<https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html>（源码在仓库 `docs/`，Pages 从 `main` 的 `/docs` 目录构建）。修改后推送即自动重建。

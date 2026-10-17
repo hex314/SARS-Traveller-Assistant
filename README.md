@@ -61,7 +61,8 @@ store/               上架素材（文案、商店图标、宣传图、截图�
 - 主机权限限定为 `https://tools.sars.gov.za/sarsonlinequery/*`
 - 无远程代码、无统计 SDK、无广告
 
-完整说明见 [隐私政策](docs/privacy-policy.html)。
+完整说明见 [隐私政策](docs/privacy-policy.html)，在线地址：
+<https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html>
 
 ## 上架素材
 

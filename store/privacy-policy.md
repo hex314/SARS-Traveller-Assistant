@@ -66,10 +66,9 @@
 
 ## 8. 联系方式
 
-如有疑问或数据相关请求，请联系：
-
+- 首选渠道：[GitHub Issues](https://github.com/hex314/SARS-Traveller-Assistant/issues)
 - 邮箱：`your-email@example.com`（请在发布前替换为真实联系方式）
-- 问题反馈：`https://github.com/your-name/sars-traveller-assistant/issues`（可选）
+- 在线版本：<https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html>
 
 ---
 
@@ -115,4 +114,6 @@ If a future version adds any network, sync, or analytics feature, this page and 
 
 ## 7. Contact
 
+GitHub Issues: <https://github.com/hex314/SARS-Traveller-Assistant/issues>
+Online version: <https://hex314.github.io/SARS-Traveller-Assistant/privacy-policy.html>
 `your-email@example.com` (replace with a real address before publishing)
