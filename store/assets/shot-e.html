@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="shot.css">
+<style>
+  .wrap {
+    width: 1280px;
+    height: 800px;
+    padding: 52px 68px 44px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .top h1 {
+    margin: 12px 0 0;
+    font-size: 33px;
+    letter-spacing: -0.5px;
+    color: #0d1a22;
+  }
+
+  .top h1 em { font-style: normal; color: #12894a; }
+
+  .top .side {
+    max-width: 330px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #5b6b78;
+    text-align: right;
+    padding-bottom: 4px;
+  }
+
+  .panels {
+    flex: 1;
+    display: flex;
+    gap: 26px;
+    min-height: 0;
+  }
+
+  /* ---------- 左：Excel 名单 ---------- */
+  .sheet {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e3e9ef;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 22px 54px rgba(15, 40, 70, 0.13);
+  }
+
+  .sheet-bar {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 16px;
+    background: #f7f9fb;
+    border-bottom: 1px solid #e8edf3;
+  }
+
+  .sheet-bar i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #dfe4ea;
+  }
+
+  .sheet-bar span {
+    margin-left: 6px;
+    font-size: 12px;
+    color: #6b7a88;
+  }
+
+  .badge {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eaf6ef;
+    color: #0f6b3e;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 13.5px;
+  }
+
+  col.gutter { width: 44px; }
+  col.name { width: 190px; }
+  col.pass { width: 136px; }
+  col.dob { width: 122px; }
+  col.phone { width: auto; }
+
+  th, td {
+    height: 52px;
+    padding: 0 14px;
+    border-right: 1px solid #eef2f6;
+    border-bottom: 1px solid #eef2f6;
+    color: #2b3a46;
+    white-space: nowrap;
+  }
+
+  th {
+    background: #f2f8f4;
+    color: #0f6b3e;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-align: left;
+  }
+
+  td.gutter, th.gutter {
+    width: 44px;
+    padding: 0;
+    text-align: center;
+    background: #f7f9fb;
+    color: #9aa8b4;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(even) td:not(.merged) { background: #fcfdfe; }
+
+  .mono {
+    font-family: Consolas, "Courier New", monospace;
+    letter-spacing: 0.2px;
+  }
+
+  td.merged {
+    background: #eef8f2 !important;
+    border: 1px dashed #9dd3b6;
+    color: #16663f;
+    font-weight: 600;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12.5px;
+    line-height: 1.45;
+    white-space: normal;
+  }
+
+  .arrow-note {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #0d1a22;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 8px 18px rgba(13, 26, 34, 0.2);
+  }
+
+  .arrow-note b {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35c07a;
+  }
+
+  /* ---------- 右：解析结果 ---------- */
+  .side-card {
+    width: 348px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .side-title {
+    padding: 2px 2px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #16242e;
+  }
+
+  .side-title span {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7a88;
+  }
+
+  .trav {
+    padding: 13px 15px;
+    border: 1px solid #e3e9ef;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(15, 40, 70, 0.06);
+  }
+
+  .trav-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+  }
+
+  .trav-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #16242e;
+  }
+
+  .trav-no {
+    font-size: 11px;
+    color: #7b8a97;
+  }
+
+  .trav-row {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    row-gap: 4px;
+    font-size: 12.5px;
+    color: #3c4b57;
+  }
+
+  .trav-row span:nth-child(odd) { color: #7b8a97; }
+
+  .ok {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #eaf6ef;
+    color: #0f6b3e;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .tips {
+    margin-top: auto;
+    padding: 14px 16px;
+    border-radius: 11px;
+    background: #f5f8fa;
+    border: 1px solid #e6ebf1;
+    font-size: 12.5px;
+    line-height: 1.95;
+    color: #46525e;
+  }
+
+  .tips b { color: #0f6b3e; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="brand"><img src="../../icons/icon32.png" alt="">南非入境申报助手</div>
+      <h1>名单直接粘贴，<em>自动拆成旅客</em></h1>
+    </div>
+    <div class="side">
+      从 Excel 复制整块数据粘进来即可，首行可以是表头。
+      手机号合并单元格时，空行会自动沿用上一行号码。
+    </div>
+  </div>
+
+  <div class="panels">
+    <div class="sheet">
+      <div class="sheet-bar">
+        <i></i><i></i><i></i>
+        <span>traveller-list.xlsx — Sheet1</span>
+      </div>
+      <div class="badge">示例数据</div>
+
+      <table>
+        <colgroup>
+          <col class="gutter">
+          <col class="name">
+          <col class="pass">
+          <col class="dob">
+          <col class="phone">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="gutter"></th>
+            <th>A ｜ 英文姓名</th>
+            <th>B ｜ 护照号</th>
+            <th>C ｜ 出生日期</th>
+            <th>D ｜ 手机号</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="gutter">1</td>
+            <td>HUANG SHAOQING</td>
+            <td class="mono">E12345678</td>
+            <td class="mono">1967-04-15</td>
+            <td class="mono">+86 138 0000 0000</td>
+          </tr>
+          <tr>
+            <td class="gutter">2</td>
+            <td>CHEN LIMEI</td>
+            <td class="mono">E87654321</td>
+            <td class="mono">1971-09-02</td>
+            <td class="merged" rowspan="2">
+              +86 138 0000 0001<br>
+              <span style="font-weight:400;font-size:11px;color:#5c8f74">合并单元格</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">3</td>
+            <td>WANG QIANG</td>
+            <td class="mono">E11223344</td>
+            <td class="mono">1985-11-28</td>
+          </tr>
+          <tr>
+            <td class="gutter">4</td>
+            <td>LI NA</td>
+            <td class="mono">E55667788</td>
+            <td class="mono">1992-06-11</td>
+            <td class="mono" style="color:#a8b4bf">（空，沿用上一行）</td>
+          </tr>
+          <tr>
+            <td class="gutter">5</td>
+            <td>ZHAO LEI</td>
+            <td class="mono">E99887766</td>
+            <td class="mono">1979-03-23</td>
+            <td class="mono">+86 138 0000 0004</td>
+          </tr>
+          <tr>
+            <td class="gutter">6</td>
+            <td>SUN YING</td>
+            <td class="mono">E44556677</td>
+            <td class="mono">1995-08-30</td>
+            <td class="mono">+86 138 0000 0005</td>
+          </tr>
+          <tr>
+            <td class="gutter">7</td>
+            <td>ZHOU FENG</td>
+            <td class="mono">E33445566</td>
+            <td class="mono">1988-12-05</td>
+            <td class="mono" style="color:#a8b4bf">（空，沿用上一行）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="arrow-note"><b></b>合并单元格与空行都会自动补全</div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-title">
+        解析结果
+        <span>7 位旅客 → 7 个独立标签页</span>
+      </div>
+
+      <div class="trav">
+        <div class="trav-head">
+          <span class="trav-name">HUANG SHAOQING</span>
+          <span class="ok">✓ 已解析</span>
+        </div>
+        <div class="trav-row">
+          <span>护照号</span><span class="mono">E12345678</span>
+          <span>出生日期</span><span class="mono">1967-04-15</span>
+          <span>手机号</span><span class="mono">+86 138 0000 0000</span>
+        </div>
+      </div>
+
+      <div class="trav">
+        <div class="trav-head">
+          <span class="trav-name">CHEN LIMEI</span>
+          <span class="ok">✓ 已解析</span>
+        </div>
+        <div class="trav-row">
+          <span>护照号</span><span class="mono">E87654321</span>
+          <span>出生日期</span><span class="mono">1971-09-02</span>
+          <span>手机号</span><span class="mono">+86 138 0000 0001</span>
+        </div>
+      </div>
+
+      <div class="trav">
+        <div class="trav-head">
+          <span class="trav-name">WANG QIANG</span>
+          <span class="ok">✓ 自动沿用手机号</span>
+        </div>
+        <div class="trav-row">
+          <span>护照号</span><span class="mono">E11223344</span>
+          <span>出生日期</span><span class="mono">1985-11-28</span>
+          <span>手机号</span><span class="mono">+86 138 0000 0001</span>
+        </div>
+      </div>
+
+      <div class="tips">
+        <b>✓</b> 首行表头可有可无，自动识别<br>
+        <b>✓</b> 合并单元格、空行自动沿用上一行<br>
+        <b>✓</b> 每位旅客一个标签页，数据不串位
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

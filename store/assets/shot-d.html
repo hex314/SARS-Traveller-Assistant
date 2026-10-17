@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="shot.css">
+<style>
+  .wrap {
+    width: 1280px;
+    height: 800px;
+    padding: 54px 68px 46px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 26px;
+  }
+
+  .top h1 {
+    margin: 12px 0 0;
+    font-size: 33px;
+    letter-spacing: -0.5px;
+    color: #0d1a22;
+  }
+
+  .top h1 em { font-style: normal; color: #12894a; }
+
+  .top .side {
+    max-width: 320px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #5b6b78;
+    text-align: right;
+    padding-bottom: 6px;
+  }
+
+  .table-card {
+    flex: 1;
+    overflow: hidden;
+    border: 1px solid #e3e9ef;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 24px 60px rgba(15, 40, 70, 0.12);
+    display: flex;
+    flex-direction: column;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  thead th {
+    padding: 15px 22px;
+    background: #f2f8f4;
+    color: #0f6b3e;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-align: left;
+    border-bottom: 1px solid #e2ede6;
+  }
+
+  thead th:first-child { width: 214px; }
+  thead th:nth-child(2) { width: 180px; }
+  thead th:last-child { width: 296px; }
+
+  tbody td {
+    padding: 22px;
+    border-bottom: 1px solid #eef2f6;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 1.62;
+    color: #2b3a46;
+  }
+
+  tbody tr:last-child td { border-bottom: 0; }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .num {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #12894a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .page-name {
+    font-weight: 700;
+    color: #16242e;
+  }
+
+  .page-name span {
+    display: block;
+    margin-top: 2px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #7b8a97;
+    letter-spacing: 0.3px;
+  }
+
+  .fill { color: #33434f; }
+
+  .fill b {
+    display: inline-block;
+    margin: 0 2px 4px 0;
+    padding: 2px 8px;
+    border-radius: 5px;
+    background: #f4f7f5;
+    border: 1px solid #e4ece6;
+    color: #2f5a44;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  .confirm {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    color: #5b6b78;
+  }
+
+  .confirm .tick {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8f5ee;
+    color: #12894a;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .confirm.auto .tick { background: #12894a; color: #fff; }
+  .confirm.auto { color: #184a33; font-weight: 600; }
+
+  .strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 20px 22px;
+    background: #fafbfc;
+    border-top: 1px solid #eef2f6;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 0 18px;
+    border-right: 1px solid #e9eef3;
+  }
+
+  .stat:first-child { padding-left: 2px; }
+  .stat:last-child { border-right: 0; }
+
+  .stat strong {
+    display: block;
+    font-size: 19px;
+    color: #0d1a22;
+    letter-spacing: -0.2px;
+  }
+
+  .stat span {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #6b7a88;
+  }
+
+  .footnote {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #6b7a88;
+  }
+
+  .footnote .right { color: #12894a; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="brand"><img src="../../icons/icon32.png" alt="">南非入境申报助手</div>
+      <h1>三步流程，<em>一表看清</em></h1>
+    </div>
+    <div class="side">
+      公共信息与旅客名单填一次，剩下的三步由扩展完成：
+      自动填字段、自动翻页，最终提交仍由你确认。
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>步骤</th>
+          <th>页面</th>
+          <th>自动填写的内容</th>
+          <th>需要你确认</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="step"><span class="num">1</span></div>
+          </td>
+          <td>
+            <div class="page-name">Traveller Details<span>旅客信息</span></div>
+          </td>
+          <td class="fill">
+            <b>声明类型</b><b>口岸</b><b>交通工具</b><b>证件类型</b>
+            <b>职业</b><b>地址</b><b>邮箱</b>
+          </td>
+          <td>
+            <div class="confirm auto"><span class="tick">✓</span>保存后自动进入下一步</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="step"><span class="num">2</span></div>
+          </td>
+          <td>
+            <div class="page-name">Travel Details<span>行程信息</span></div>
+          </td>
+          <td class="fill">
+            <b>旅客类型</b><b>旅行原因</b><b>出发地</b><b>经停地</b>
+            <b>目的地</b><b>到达日期</b><b>航班号</b>
+          </td>
+          <td>
+            <div class="confirm"><span class="tick">✓</span>核对到达日期与航班</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="step"><span class="num">3</span></div>
+          </td>
+          <td>
+            <div class="page-name">Payments Summary<span>付款摘要</span></div>
+          </td>
+          <td class="fill">
+            <b>Declaration 置 YES</b><b>自动点击 Next</b>
+          </td>
+          <td>
+            <div class="confirm"><span class="tick">✓</span>逐页核对后自行提交</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="strip">
+      <div class="stat"><strong>1 位旅客 1 个标签页</strong><span>多人批量录入不串数据</span></div>
+      <div class="stat"><strong>20+ 字段自动填充</strong><span>下拉选项取自 SARS 真实页面</span></div>
+      <div class="stat"><strong>3 步自动翻页</strong><span>Declaration 自动置 YES</span></div>
+      <div class="stat"><strong>0 数据上传</strong><span>仅保存在本机浏览器</span></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span>仅适用于 tools.sars.gov.za 旅客申报页面 · 独立第三方工具，与 SARS 无隶属关系</span>
+    <span class="right">不会自动提交申报</span>
+  </div>
+</div>
+</body>
+</html>
