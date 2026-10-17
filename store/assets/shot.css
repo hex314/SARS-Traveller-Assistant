@@ -1,0 +1,151 @@
+/* 商店截图 / 推广图专用渲染样式（不影响扩展本身） */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  color: #122029;
+  background:
+    radial-gradient(900px 540px at 10% -12%, #dff1e6 0%, rgba(223, 241, 230, 0) 62%),
+    radial-gradient(760px 520px at 98% 6%, #dbe7fb 0%, rgba(219, 231, 251, 0) 64%),
+    #f4f6f9;
+}
+
+.canvas {
+  width: 1280px;
+  height: 800px;
+  padding: 64px 72px 64px 76px;
+  display: flex;
+  align-items: center;
+  gap: 54px;
+}
+
+/* ---------- 左侧文案 ---------- */
+
+.copy { width: 428px; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f6b3e;
+  letter-spacing: 0.2px;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 24px 0 20px;
+  font-size: 39px;
+  line-height: 1.26;
+  letter-spacing: -0.6px;
+  color: #0d1a22;
+}
+
+h1 em {
+  font-style: normal;
+  color: #12894a;
+}
+
+ul.pts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.pts li {
+  position: relative;
+  margin: 0 0 13px;
+  padding-left: 24px;
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: #3c4b57;
+}
+
+ul.pts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #12894a;
+  box-shadow: 0 0 0 4px rgba(18, 137, 74, 0.14);
+}
+
+.tail {
+  margin-top: 26px;
+  padding: 12px 14px;
+  border-left: 3px solid #12894a;
+  border-radius: 0 8px 8px 0;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(15, 40, 70, 0.06);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4a5866;
+}
+
+/* ---------- 右侧设备框 ---------- */
+
+.device {
+  width: 520px;
+  height: 672px;
+  overflow: hidden;
+  border: 1px solid #e2e8ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow:
+    0 26px 64px rgba(15, 40, 70, 0.18),
+    0 4px 12px rgba(15, 40, 70, 0.07);
+}
+
+.device-bar {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 1px solid #e6ebf1;
+  background: #f7f9fb;
+}
+
+.device-bar i {
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #dfe4ea;
+}
+
+.device-title {
+  margin-left: 8px;
+  font-size: 12px;
+  color: #6b7a88;
+}
+
+.popup {
+  width: 520px;
+  height: 634px;
+  padding: 14px;
+  overflow: hidden;
+  background: #f5f6f8;
+  color: #202124;
+  font: 13px/1.5 Arial, "Microsoft YaHei", sans-serif;
+}
+
+.popup h1 { font-size: 19px; margin: 0 0 4px; letter-spacing: 0; color: #202124; }
+.popup header { margin-bottom: 12px; }
+
+/* 状态提示里的行距在截图中更紧凑一些 */
+.popup #details { margin: 0; }

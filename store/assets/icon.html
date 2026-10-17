@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  svg { display: block; width: 100vw; height: 100vh; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1CA85C"/>
+      <stop offset="0.55" stop-color="#12894A"/>
+      <stop offset="1" stop-color="#0A6032"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.26"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="128" height="128" rx="29" fill="url(#bg)"/>
+  <rect x="0" y="0" width="128" height="128" rx="29" fill="url(#sheen)"/>
+
+  <!-- 申报单 -->
+  <rect x="27" y="19" width="66" height="86" rx="10" fill="#ffffff"/>
+  <rect x="42" y="37" width="42" height="7" rx="3.5" fill="#BFE3CE"/>
+  <rect x="42" y="53" width="42" height="7" rx="3.5" fill="#BFE3CE"/>
+  <rect x="42" y="69" width="27" height="7" rx="3.5" fill="#BFE3CE"/>
+
+  <!-- 已确认徽章 -->
+  <circle cx="92" cy="94" r="24" fill="#ffffff"/>
+  <circle cx="92" cy="94" r="18.5" fill="#0E7C43"/>
+  <path d="M83.5 94.2 L89.6 100.3 L101 88.4"
+        fill="none" stroke="#ffffff" stroke-width="5.2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>南非入境申报助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>南非入境申报助手</h1>
+    <p>公共信息填写一次，旅客信息分别管理。</p>
+  </header>
+
+  <section class="panel">
+    <h2>一、公共信息</h2>
+    <p class="hint">带 * 的项目为必填。公共信息将用于所有旅客。</p>
+
+    <button id="fetchOptionsBtn" class="secondary wide-fetch">
+      从 SARS 页面获取下拉框选项（含联动）
+    </button>
+
+    <p class="hint">
+      请先打开并加载完成 SARS 表单页面，再点击上方按钮获取真实选项。
+      Mode of Travel Type 与 Airport、Mode of Transport 存在联动：
+      修改上级选项后会自动刷新下级可选项。
+      未获取选项时也可手填（使用默认值），但推荐使用页面真实选项。
+    </p>
+
+    <div class="grid">
+      <label class="wide">
+        Declaration Type（声明类型）
+        <select id="declarationType">
+          <option value="NIL" selected>NIL - I HAVE NO GOODS AND / OR CURRENCY TO DECLARE（无物品及货币需申报）</option>
+          <option value="FULL">FULL - I HAVE GOODS (INCLUDING VEHICLES) AND/OR CURRENCY TO DECLARE（有物品/车辆及货币需申报）</option>
+        </select>
+      </label>
+
+      <label>
+        Mode of Travel Type（旅行方式）
+        <select id="modeOfTravelType" disabled>
+          <option value="Air">Air（航空，默认，未获取选项）</option>
+        </select>
+      </label>
+
+      <label class="wide">
+        Mode of Travel / Airport（入境口岸 / 机场）
+        <select id="port" disabled>
+          <option value="O.R. Tambo International Airport">O.R. Tambo International Airport（奥利弗·坦博国际机场，默认，未获取选项）</option>
+        </select>
+      </label>
+
+      <label class="wide">
+        Mode of Transport（交通工具）
+        <select id="modeOfTransport" disabled>
+          <option value="International Aircraft">International Aircraft（国际航班，默认，未获取选项）</option>
+        </select>
+      </label>
+
+      <label class="wide">
+        Travel Document Type（证件类型）
+        <select id="travelDocumentType" disabled>
+          <option value="Ordinary Passport">Ordinary Passport（普通护照，默认，未获取选项）</option>
+        </select>
+      </label>
+
+      <label class="wide">
+        Occupation（职业）
+        <select id="occupation" disabled>
+          <option value="Trade/Business">Trade/Business（贸易/商务，默认，未获取选项）</option>
+        </select>
+      </label>
+
+      <label>
+        Traveller Type *（旅客类型）
+        <select id="travellerType">
+          <option value="Travelling in my personal capacity" selected>
+            Travelling in my personal capacity（个人出行）
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Travel Reason *（旅行原因）
+        <select id="travelReason">
+          <option value="Leisure" selected>Leisure（休闲）</option>
+        </select>
+      </label>
+
+      <label>
+        Travelling From *（出发地）
+        <select id="travellingFrom">
+          <option value="China" selected>China（中国）</option>
+        </select>
+      </label>
+
+      <label>
+        Travelling Via *（经停地）
+        <select id="travellingVia">
+          <option value="None" selected>None（无经停）</option>
+        </select>
+      </label>
+
+      <label>
+        Travelling To *（目的地）
+        <select id="travellingTo">
+          <option value="South Africa" selected>South Africa（南非）</option>
+        </select>
+      </label>
+
+      <div class="wide date-field">
+        <span class="date-field-label">
+          Arrival Date（到达日期，可选窗口固定为今天～明天；灰色不可选）
+        </span>
+
+        <div class="date-trigger-row">
+          <button type="button" id="arrivalDateTrigger" class="secondary date-trigger">
+            <span id="arrivalDateText">未选择（使用页面日期）</span>
+            <span class="date-caret">▾</span>
+          </button>
+
+          <button type="button" id="fetchDateBtn" class="secondary date-fetch">
+            从页面读取可选日期
+          </button>
+        </div>
+
+        <input id="arrivalDate" type="hidden">
+
+        <div id="arrivalDatePanel" class="date-panel" hidden>
+          <div class="date-panel-head">
+            <button type="button" id="datePrevBtn" class="date-nav">‹</button>
+            <strong id="dateMonthLabel"></strong>
+            <button type="button" id="dateNextBtn" class="date-nav">›</button>
+          </div>
+
+          <div class="date-grid date-grid-head" id="dateWeek"></div>
+          <div class="date-grid" id="dateGrid"></div>
+
+          <div class="date-manual">
+            <label>
+              最早可选
+              <input id="dateMinInput" type="date">
+            </label>
+            <label>
+              最晚可选
+              <input id="dateMaxInput" type="date">
+            </label>
+          </div>
+
+          <div class="date-panel-foot">
+            <span id="dateRangeHint" class="hint"></span>
+            <button type="button" id="dateClearBtn" class="date-clear">
+              清除（用页面日期）
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <label>
+        Street *（街道）
+        <input id="street" placeholder="填写街道地址">
+      </label>
+
+      <label>
+        City / Town *（城市）
+        <input id="city" placeholder="填写城市">
+      </label>
+
+      <label>
+        Postal Code *（邮政编码）
+        <input id="postal" placeholder="填写邮政编码">
+      </label>
+
+      <label>
+        Email *（电子邮箱）
+        <input id="email" type="email" placeholder="填写邮箱">
+      </label>
+
+      <label class="wide">
+        Flight Number（航班号，可选）
+        <input
+          id="flightNumber"
+          placeholder="如页面有该字段，可填写航班号，例如 SAxxx"
+        >
+      </label>
+    </div>
+
+    <p class="hint">
+      不需要填写 Hotel / Place of Residence。
+      请按实际旅行资料填写公共信息。
+      航班号暂不作为阻断批量操作的必填项。
+    </p>
+
+    <button id="saveBtn" class="secondary">
+      保存公共信息和旅客数据
+    </button>
+  </section>
+
+  <section class="panel">
+    <h2>二、旅客数据</h2>
+
+    <p class="hint">
+      粘贴 Excel 复制的数据，首行为表头也可以。
+      支持英文姓名、护照号、出生日期、手机号。
+      护照号必须填写真实号码。
+      手机号若是合并单元格（整组共用），空行会自动沿用上一行的号码；
+      姓名或护照号合并无法自动沿用，请先取消合并再复制。
+    </p>
+
+    <div class="actions">
+      <button id="templateBtn" class="secondary">
+        载入示例旅客
+      </button>
+
+      <button id="clearBtn" class="secondary">
+        清空旅客
+      </button>
+    </div>
+
+    <textarea
+      id="excelData"
+      rows="7"
+      spellcheck="false"
+      placeholder="英文姓名&#9;护照号&#9;出生日期&#9;手机号&#10;SHAOQING HUANG&#9;真实护照号&#9;1967-04-15&#9;手机号"
+    ></textarea>
+
+    <div class="actions">
+      <button id="parseBtn">解析旅客数据</button>
+
+      <button id="exportTemplateBtn" class="secondary">
+        复制表格模板
+      </button>
+    </div>
+
+    <div id="travellerCount" class="hint">
+      当前旅客：0 人
+    </div>
+
+    <div id="travellerList"></div>
+  </section>
+
+  <section class="panel">
+    <h2>三、填写 SARS 表单</h2>
+
+    <p class="hint">
+      先保存信息，再点击下方按钮。
+      每位旅客会单独打开一个标签页并绑定其数据，避免旅客数据串位。
+      第一步填完后会自动点击 Next 进入并填写第二步 Travel Details，
+      再自动进入第三步 Payments Summary，将 Declaration 开关置为 YES 并点击 Next。
+      最终提交仍需自行核对后手动完成。
+    </p>
+
+    <div class="actions vertical">
+      <button id="openAndFillBtn">
+        一键批量录入（打开标签页并自动填写）
+      </button>
+    </div>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <pre id="details" hidden></pre>
+  </section>
+
+  <footer>
+    <p>
+      本扩展不会自动提交表单。
+      填写后请逐页核对护照信息及网站字段，再自行提交。
+    </p>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

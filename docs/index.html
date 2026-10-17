@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>南非入境申报助手</title>
+<style>
+  :root { --ink:#14212b; --muted:#5b6b78; --line:#e3e9ef; --brand:#12894a; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 56px 20px;
+    background: #f6f8fa; color: var(--ink);
+    font: 15px/1.75 -apple-system, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+  }
+  main {
+    max-width: 720px; margin: 0 auto; padding: 40px 44px 44px;
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 18px 46px rgba(15, 40, 70, .07);
+  }
+  h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.3px; }
+  .sub { margin: 0 0 26px; color: var(--muted); font-size: 14px; }
+  .lead {
+    margin: 0 0 26px; padding: 14px 18px;
+    border-left: 3px solid var(--brand); border-radius: 0 8px 8px 0;
+    background: #f2f9f5;
+  }
+  ul { padding-left: 20px; margin: 0 0 26px; }
+  li { margin: 6px 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  a.btn {
+    display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: var(--brand); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 14px;
+  }
+  a.btn.ghost {
+    background: #fff; color: var(--ink);
+    border: 1px solid var(--line); font-weight: 600;
+  }
+  footer { margin-top: 32px; color: var(--muted); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>南非入境申报助手</h1>
+  <p class="sub">Chrome 扩展 · 批量填写南非海关旅客申报表</p>
+
+  <p class="lead">
+    公共信息填一次，旅客名单粘贴一次，每位旅客单独一个标签页自动完成三步填写与翻页。
+    <strong>不会自动提交</strong>，最终确认始终由使用者本人完成。
+  </p>
+
+  <ul>
+    <li>从 SARS 页面读取真实下拉选项，口岸与交通工具自动联动</li>
+    <li>到达日期按页面可选范围选择，不可选日期自动置灰</li>
+    <li>粘贴 Excel 名单即可批量录入，多人申报不串数据</li>
+    <li>数据仅保存在本机，不上传、不收集、不出售</li>
+  </ul>
+
+  <div class="links">
+    <a class="btn" href="privacy-policy.html">隐私政策 / Privacy Policy</a>
+    <a class="btn ghost" href="https://github.com/hex314/SARS-Traveller-Assistant">源代码仓库</a>
+  </div>
+
+  <footer>
+    独立第三方辅助工具，与 South African Revenue Service（SARS）无隶属关系。
+  </footer>
+</main>
+</body>
+</html>

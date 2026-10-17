@@ -1,0 +1,15 @@
+# 构建产物与本地临时文件
+*.zip
+
+# WorkBuddy 本地数据
+.workbuddy/
+
+# 无头浏览器渲染时的临时 profile
+.chrome-tmp*/
+.edge-tmp*/
+
+# 依赖与系统文件
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini

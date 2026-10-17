@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="shot.css">
+<style>
+  .page {
+    width: 1280px;
+    height: 800px;
+    padding: 52px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .head h1 {
+    margin: 14px 0 0;
+    font-size: 34px;
+    letter-spacing: -0.5px;
+    color: #0d1a22;
+  }
+
+  .head h1 em { font-style: normal; color: #12894a; }
+
+  .head .note {
+    max-width: 330px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #566472;
+    text-align: right;
+  }
+
+  .browser {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border: 1px solid #e2e8ef;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 26px 64px rgba(15, 40, 70, 0.16);
+  }
+
+  .url {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 42px;
+    padding: 0 16px;
+    border-bottom: 1px solid #e8edf3;
+    background: #f7f9fb;
+  }
+
+  .url i { width: 10px; height: 10px; border-radius: 50%; background: #dfe4ea; }
+
+  .url span {
+    margin-left: 8px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e4e9ef;
+    font-size: 12px;
+    color: #6b7a88;
+  }
+
+  .site { padding: 30px 44px 34px; }
+
+  /* 步骤条 */
+  .steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 26px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #46525e;
+  }
+
+  .step .dot {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #12558f;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .step.done .dot { font-size: 13px; }
+
+  .step.current .name { font-weight: 700; color: #1b2a36; }
+
+  .rule {
+    flex: 1;
+    height: 1px;
+    margin: 0 16px;
+    background: #d8dee6;
+  }
+
+  /* 提示条 */
+  .banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding: 12px 16px;
+    border: 1px solid #d5e0ec;
+    border-radius: 8px;
+    background: #f6f9fc;
+    font-size: 13.5px;
+    color: #2b465e;
+  }
+
+  .banner b {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #12558f;
+    color: #fff;
+    font-size: 12px;
+    font-style: italic;
+    font-family: Georgia, serif;
+  }
+
+  .card {
+    padding: 22px 26px 26px;
+    border: 1px solid #e4e9ef;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .card h2 {
+    margin: 0 0 22px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #1b2a36;
+  }
+
+  .decl-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: #2b3a46;
+  }
+
+  .switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 4px 0 10px;
+    border: 1px solid #12894a;
+    border-radius: 14px;
+    background: #12894a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .switch .knob {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .foot {
+    margin-top: 26px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .next {
+    min-width: 116px;
+    padding: 11px 22px;
+    border-radius: 6px;
+    background: #12558f;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* 标注 */
+  .callout {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #0d1a22;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(13, 26, 34, 0.24);
+  }
+
+  .callout b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #12894a;
+    font-size: 11px;
+  }
+
+  .callout.c1 { right: 54px; bottom: 58px; }
+  .callout.c2 { left: 470px; top: 236px; }
+
+  .line {
+    position: absolute;
+    border-top: 2px dashed rgba(13, 26, 34, 0.35);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="head">
+    <div>
+      <div class="brand"><img src="../../icons/icon32.png" alt="">南非入境申报助手</div>
+      <h1>三步流程<em>自动走完</em></h1>
+    </div>
+    <div class="note">
+      第一步与第二步填完后自动翻页；进入 Payments Summary 时
+      自动把 Declaration 开关切到 YES，再点 Next。
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="url">
+      <i></i><i></i><i></i>
+      <span>tools.sars.gov.za/sarsonlinequery/traveller</span>
+    </div>
+
+    <div class="site">
+      <div class="steps">
+        <div class="step done"><span class="dot">✓</span><span class="name">Traveller Details</span></div>
+        <div class="rule"></div>
+        <div class="step done"><span class="dot">✓</span><span class="name">Travel Details</span></div>
+        <div class="rule"></div>
+        <div class="step current"><span class="dot">3</span><span class="name">Payments Summary</span></div>
+      </div>
+
+      <div class="banner">
+        <b>i</b>
+        <span>Change the toggle button to Yes to confirm that the information captured is true and correct.</span>
+      </div>
+
+      <div class="card">
+        <h2>Declaration</h2>
+        <div class="decl-row">
+          <span class="switch">YES<span class="knob"></span></span>
+          <span>I hereby declare that the information provided is true and correct</span>
+        </div>
+        <div class="foot"><div class="next">Next</div></div>
+      </div>
+    </div>
+
+    <div class="callout c2"><b>1</b>自动把 Declaration 置为 YES</div>
+    <div class="callout c1"><b>2</b>自动点击 Next</div>
+  </div>
+</div>
+</body>
+</html>

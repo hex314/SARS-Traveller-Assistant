@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../popup.css">
+<link rel="stylesheet" href="shot.css">
+<style>
+  /* 内容超出时做柔和淡出，避免截断边缘显得突兀 */
+  .popup.fade {
+    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 54px), transparent 100%);
+            mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 54px), transparent 100%);
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="copy">
+    <div class="brand"><img src="../../icons/icon32.png" alt="">南非入境申报助手</div>
+    <h1>公共信息填一次<br>所有旅客<em>自动套用</em></h1>
+    <ul class="pts">
+      <li>下拉选项直接从 SARS 页面读取，口岸与交通工具自动联动</li>
+      <li>到达日期按页面可选范围挑选，不可选日期自动置灰</li>
+      <li>公共信息与旅客名单一次保存，下次打开即用</li>
+    </ul>
+    <div class="tail">每位旅客单独一个标签页，多人申报不会串数据。</div>
+  </div>
+
+  <div class="device">
+    <div class="device-bar"><i></i><i></i><i></i><span class="device-title">南非入境申报助手</span></div>
+    <div class="popup fade">
+      <header>
+        <h1>南非入境申报助手</h1>
+        <p>公共信息填写一次，旅客信息分别管理。</p>
+      </header>
+
+      <section class="panel">
+        <h2>一、公共信息</h2>
+        <p class="hint">带 * 的项目为必填。公共信息将用于所有旅客。</p>
+
+        <button id="fetchOptionsBtn" class="secondary wide-fetch">
+          从 SARS 页面获取下拉框选项（含联动）
+        </button>
+
+        <p class="hint">
+          已从页面读取 6 组下拉选项。修改 Mode of Travel Type 或 Airport
+          后会自动刷新下级可选项。
+        </p>
+
+        <div class="grid">
+          <label class="wide">
+            Declaration Type（声明类型）
+            <select><option>NIL - I HAVE NO GOODS AND / OR CURRENCY TO DECLARE（无物品及货币需申报）</option></select>
+          </label>
+
+          <label>
+            Mode of Travel Type（旅行方式）
+            <select><option>Air</option></select>
+          </label>
+
+          <label>
+            Mode of Transport（交通工具）
+            <select><option>International Aircraft</option></select>
+          </label>
+
+          <label class="wide">
+            Mode of Travel / Airport（入境口岸 / 机场）
+            <select><option>O.R. Tambo International Airport</option></select>
+          </label>
+
+          <label class="wide">
+            Travel Document Type（证件类型）
+            <select><option>Ordinary Passport</option></select>
+          </label>
+
+          <label class="wide">
+            Occupation（职业）
+            <select><option>Trade/Business</option></select>
+          </label>
+
+          <label>
+            Traveller Type *（旅客类型）
+            <select><option>Travelling in my personal capacity</option></select>
+          </label>
+
+          <label>
+            Travel Reason *（旅行原因）
+            <select><option>Leisure</option></select>
+          </label>
+
+          <label>
+            Travelling From *（出发地）
+            <select><option>China</option></select>
+          </label>
+
+          <label>
+            Travelling Via *（经停地）
+            <select><option>None</option></select>
+          </label>
+
+          <label>
+            Travelling To *（目的地）
+            <select><option>South Africa</option></select>
+          </label>
+
+          <div class="wide date-field">
+            <span class="date-field-label">
+              Arrival Date（到达日期，可选窗口固定为今天～明天；灰色不可选）
+            </span>
+            <div class="date-trigger-row">
+              <button type="button" class="secondary date-trigger">
+                <span>2026-10-17</span>
+                <span class="date-caret">▾</span>
+              </button>
+              <button type="button" class="secondary date-fetch">
+                从页面读取可选日期
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

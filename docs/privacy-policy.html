@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐私政策 · 南非入境申报助手</title>
+<style>
+  :root {
+    --ink: #14212b;
+    --muted: #5b6b78;
+    --line: #e3e9ef;
+    --brand: #12894a;
+    --bg: #f6f8fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 20px 72px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.75 -apple-system, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 44px 48px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 18px 46px rgba(15, 40, 70, 0.07);
+  }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 26px; }
+  h1 { margin: 0 0 8px; font-size: 26px; letter-spacing: -0.3px; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .lead {
+    margin: 0 0 30px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--brand);
+    border-radius: 0 8px 8px 0;
+    background: #f2f9f5;
+    font-size: 15.5px;
+  }
+  h2 { margin: 34px 0 10px; font-size: 17px; }
+  h2:first-of-type { margin-top: 0; }
+  p, li { color: #2b3a46; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 6px; font-size: 14px; }
+  th, td { padding: 9px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: #fafbfc; font-weight: 700; }
+  code {
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: #f1f3f5;
+    font-size: 13px;
+  }
+  .en { border-top: 1px solid var(--line); margin-top: 44px; padding-top: 30px; }
+  footer { margin-top: 38px; color: var(--muted); font-size: 12.5px; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>隐私政策 · 南非入境申报助手</h1>
+    <div class="meta">最后更新：2026 年 10 月 17 日 ｜ 适用版本：1.1.4 及以后</div>
+  </header>
+
+  <p class="lead"><strong>本扩展不收集、不上传、不出售任何数据。</strong>你填写的信息只保存在你自己的浏览器里。</p>
+
+  <h2>1. 处理哪些信息</h2>
+  <p>为了完成"填写申报表"这一件事，扩展需要在你本机暂存以下内容：</p>
+  <table>
+    <tr><th>数据类型</th><th>具体内容</th><th>存储位置</th></tr>
+    <tr>
+      <td>公共信息</td>
+      <td>声明类型、旅行方式、入境口岸、交通工具、证件类型、职业、旅客类型、旅行原因、出发地 / 经停地 / 目的地、到达日期、街道、城市、邮编、邮箱、航班号</td>
+      <td><code>chrome.storage.local</code>（本机）</td>
+    </tr>
+    <tr>
+      <td>旅客信息</td>
+      <td>英文姓名、护照号、出生日期、手机号</td>
+      <td><code>chrome.storage.local</code>（本机）</td>
+    </tr>
+    <tr>
+      <td>页面选项缓存</td>
+      <td>从 SARS 页面读取的下拉框选项、可选日期范围</td>
+      <td><code>chrome.storage.local</code>（本机）</td>
+    </tr>
+  </table>
+
+  <h2>2. 不做什么</h2>
+  <ul>
+    <li><strong>不上传</strong>：没有后端服务器，数据不离开你的设备。</li>
+    <li><strong>不收集使用数据</strong>：没有埋点、分析统计、崩溃上报或广告 SDK。</li>
+    <li><strong>不读取浏览历史</strong>：只在你点击扩展、或页面处于 SARS 申报地址时工作。</li>
+    <li><strong>不读取其他网站</strong>：主机权限限定为 <code>https://tools.sars.gov.za/sarsonlinequery/*</code>。</li>
+    <li><strong>不共享、不出售</strong>任何数据。</li>
+    <li><strong>不使用远程代码</strong>：代码随扩展打包，不加载 CDN 脚本、不执行 <code>eval</code>。</li>
+  </ul>
+
+  <h2>3. 数据保存在哪里</h2>
+  <p>所有数据通过浏览器的 <code>chrome.storage.local</code> 保存在当前设备，不进入云端。删除方式（任选其一）：</p>
+  <ul>
+    <li>在扩展弹窗中点"清空旅客"；</li>
+    <li>移除本扩展——Chrome 会一并清除其本地存储；</li>
+    <li>清除浏览器站点数据 / 重置浏览器配置文件。</li>
+  </ul>
+  <p>扩展作者无法访问、也无法恢复这些数据，因为它们从未离开你的设备。</p>
+
+  <h2>4. 权限与用途</h2>
+  <table>
+    <tr><th>权限</th><th>用途</th></tr>
+    <tr><td><code>storage</code></td><td>在本机保存上述信息，供下次复用</td></tr>
+    <tr><td><code>tabs</code></td><td>为每位旅客创建独立标签页，并确认标签页仍停留在申报流程内</td></tr>
+    <tr><td><code>scripting</code></td><td>在 SARS 页面注入填表脚本</td></tr>
+    <tr><td><code>activeTab</code></td><td>仅在你主动点击扩展时操作当前标签页</td></tr>
+    <tr><td>主机权限</td><td>只在 <code>tools.sars.gov.za/sarsonlinequery</code> 下读取选项并填写表单</td></tr>
+  </table>
+
+  <h2>5. 第三方</h2>
+  <p>本扩展不集成任何第三方服务、SDK 或统计工具。你填写的申报信息由你本人直接提交给南非税务局（SARS）网站，其处理规则适用 SARS 自身的隐私政策。</p>
+
+  <h2>6. 儿童隐私</h2>
+  <p>本扩展面向办理南非入境申报的成年旅客，不面向儿童，也不会主动收集任何人的信息。</p>
+
+  <h2>7. 政策变更</h2>
+  <p>若未来版本新增联网、同步或统计功能，会在本页面更新说明并在更新日志中注明。当前版本（1.1.4）不存在此类功能。</p>
+
+  <h2>8. 联系方式</h2>
+  <p>邮箱：<code>your-email@example.com</code>（发布前请替换为真实联系方式）</p>
+
+  <section class="en">
+    <h1 style="font-size:22px;">Privacy Policy · South Africa Entry Declaration Assistant</h1>
+    <p class="meta">Last updated: October 17, 2026 ｜ Applies to version 1.1.4 and later</p>
+
+    <p class="lead"><strong>This extension does not collect, transmit, or sell any data.</strong> Everything you enter stays in your own browser.</p>
+
+    <h2>1. What is stored locally</h2>
+    <p>Shared trip settings (declaration type, mode of travel, port, transport, document type, occupation, traveller type, reason, origin / via / destination, arrival date, street, city, postal code, email, flight number), traveller details (name, passport number, date of birth, mobile), and a cache of dropdown options and the selectable arrival-date range read from the SARS page — all in <code>chrome.storage.local</code> on your device.</p>
+
+    <h2>2. What we never do</h2>
+    <ul>
+      <li>No uploads — there is no backend server; no data leaves your device.</li>
+      <li>No analytics, telemetry, crash reporting, or advertising SDKs.</li>
+      <li>No browsing-history access; the extension runs only on the SARS declaration page or when you click its button.</li>
+      <li>No data sharing or selling.</li>
+      <li>No remote code; all code ships inside the package.</li>
+    </ul>
+
+    <h2>3. Data removal</h2>
+    <p>Use "Clear travellers" in the popup, or uninstall the extension — Chrome removes its local storage on uninstall. The developer has no access to this data.</p>
+
+    <h2>4. Permissions</h2>
+    <p><code>storage</code> (save settings locally), <code>tabs</code> (open one tab per traveller and verify the tab is still on the declaration flow), <code>scripting</code> (inject the filling script), <code>activeTab</code> (act on the current tab only after a user click), and host permission for <code>https://tools.sars.gov.za/sarsonlinequery/*</code>.</p>
+
+    <h2>5. Third parties</h2>
+    <p>None. Submission is made directly by you to the SARS website; SARS's own privacy policy applies.</p>
+
+    <h2>6. Changes</h2>
+    <p>Any future network, sync, or analytics feature will be documented here. Version 1.1.4 has none.</p>
+
+    <h2>7. Contact</h2>
+    <p><code>your-email@example.com</code> (replace before publishing)</p>
+  </section>
+
+  <footer>南非入境申报助手 · 独立第三方辅助工具，与 South African Revenue Service（SARS）无隶属关系。</footer>
+</main>
+</body>
+</html>
